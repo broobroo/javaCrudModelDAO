@@ -148,6 +148,7 @@ public class CouleurDAO implements IGenericCRUD {
     
             // Récupérer l'identifiant de la couleur à supprimer
             int id = jsonObject.getInt("id");
+            
     
             // Supprimer la couleur
             boolean deleted = deleteCouleur(id);

@@ -2,10 +2,15 @@
 <html>
 <head>
     <title>Create Couleur</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!-- Inclure les fichiers CSS/JS si nécessaire -->
     <!-- http://localhost:8080/demo/webapps/jsp/CouleurForm.jsp -->
 </head>
 <body>
+         <!-- Inclure le menu -->
+         <jsp:include page="menu.jsp" />
+
+    <h1>Alimentations</h1>
     <h2>Create Couleur Form</h2>
     <form id="createCouleurForm" action="/couleur" method="post">
         <label for="nom">Nom de la Couleur:</label>
@@ -16,7 +21,8 @@
         
         <input type="submit" value="Submit">
     </form>
-
+    <!-- Élément pour afficher la réponse -->
+    <div id="response"></div>
     <script>
         document.getElementById('createCouleurForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -45,7 +51,7 @@
             })
             .then(data => {
                 // Traiter la réponse (par exemple, afficher un message de succès)
-                console.log(data);
+                document.getElementById('response').innerHTML = 'Response: ' + JSON.stringify(data);
             })
             .catch(error => {
                 // Gérer les erreurs ici

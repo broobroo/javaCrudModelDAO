@@ -3,11 +3,16 @@
 
     <head>
         <title>Update Couleur</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <!-- Inclure les fichiers CSS/JS si nécessaire -->
         <!-- http://localhost:8080/demo/webapps/jsp/CouleurUpdateForm.jsp -->
     </head>
 
     <body>
+        <!-- Inclure le menu -->
+        <jsp:include page="menu.jsp" />
+
+        <h1>Alimentations</h1>
         <h2>Update Couleur Form</h2>
         <form id="updateCouleurForm" action="/couleur" method="post">
             <label for="id">ID de la Couleur:</label>
@@ -21,11 +26,16 @@
 
             <input type="submit" value="Update">
         </form>
-
+        <!-- Élément pour afficher la réponse -->
+        <div id="response"></div>
         <script>
 
         // Charger les IDs au chargement de la page
-        window.onload = function() {
+         // Charger les IDs au chargement de la page et pré-sélectionner l'ID passé dans l'URL
+         window.onload = function() {
+            var queryParams = new URLSearchParams(window.location.search);
+            var selectedId = queryParams.get('id'); // Récupérer l'ID depuis l'URL
+
             fetch('http://localhost:8080/couleur')
                 .then(response => response.json())
                 .then(data => {
@@ -33,7 +43,24 @@
                     data.forEach(function(couleur) {
                         var option = new Option(couleur.id, couleur.id);
                         select.add(option);
+                        if (couleur.id == selectedId) {
+                            option.selected = true; // Pré-sélectionner l'option si elle correspond à l'ID
+                        }
                     });
+
+                    // Charger les données de la couleur sélectionnée
+                    if (selectedId) {
+                        fetch('http://localhost:8080/couleur?id=' + selectedId)
+                            .then(response => response.json())
+                            .then(data => {
+                                if(data.length > 0) {
+                                    var couleur = data[0];
+                                    document.getElementById('nom').value = couleur.nom;
+                                    document.getElementById('hexadecimal_rvb').value = couleur.hexadecimal_rvb;
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                    }
                 });
         };
 
@@ -85,7 +112,7 @@
                     })
                     .then(data => {
                         // Traiter la réponse (par exemple, afficher un message de succès)
-                        console.log(data);
+                        document.getElementById('response').innerHTML = 'Response: ' + JSON.stringify(data);
                     })
                     .catch(error => {
                         // Gérer les erreurs ici

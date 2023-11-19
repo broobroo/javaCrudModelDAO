@@ -1,53 +1,52 @@
 -- --------------------------------------------------------
--- Hôte:                         127.0.0.1
--- Version du serveur:           8.0.30 - MySQL Community Server - GPL
--- SE du serveur:                Win64
--- HeidiSQL Version:             12.1.0.6537
+-- Hôte :                        localhost
+-- Version du serveur:           5.7.24 - MySQL Community Server (GPL)
+-- SE du serveur:                Win32
+-- HeidiSQL Version:             10.2.0.5599
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- Listage de la structure de la base pour alimentations
-CREATE DATABASE IF NOT EXISTS `alimentations` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `alimentations` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */;
 USE `alimentations`;
 
--- Listage de la structure de table alimentations. aliments
+-- Listage de la structure de la table alimentations. aliments
 CREATE TABLE IF NOT EXISTS `aliments` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `poids_moyen` float NOT NULL,
-  `calories` int NOT NULL,
+  `calories` int(11) NOT NULL,
   `vitamines_C` float NOT NULL,
-  `type_id` int DEFAULT NULL,
-  `couleur_id` int DEFAULT NULL,
+  `type_id` int(11) DEFAULT NULL,
+  `couleur_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
   KEY `couleur_id` (`couleur_id`),
   CONSTRAINT `aliments_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `type_aliment` (`id`),
   CONSTRAINT `aliments_ibfk_2` FOREIGN KEY (`type_id`) REFERENCES `type_aliment` (`id`),
   CONSTRAINT `aliments_ibfk_3` FOREIGN KEY (`couleur_id`) REFERENCES `couleur` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table alimentations.aliments : ~78 rows (environ)
-INSERT IGNORE INTO `aliments` (`id`, `nom`, `poids_moyen`, `calories`, `vitamines_C`, `type_id`, `couleur_id`) VALUES
-	(1, 'Bigaradier', 0.1, 66, 50.5, 1, 6),
-	(2, 'Banane', 0.15, 89, 0, 1, 6),
-	(3, 'Orange', 0.2, 47, 0, 1, 9),
-	(4, 'Fraise', 0.02, 33, 0, 1, 3),
-	(5, 'Abricot', 0.05, 48, 0, 1, 2),
-	(6, 'Ananas', 1, 50, 0, 1, 4),
-	(7, 'Avocat', 0.2, 160, 0, 1, 13),
-	(8, 'Cassis', 0.01, 63, 0, 1, 1),
-	(9, 'Cerise', 0.01, 50, 0, 1, 3),
-	(10, 'Citron', 0.15, 29, 0, 1, 6),
+-- Listage des données de la table alimentations.aliments : ~80 rows (environ)
+DELETE FROM `aliments`;
+/*!40000 ALTER TABLE `aliments` DISABLE KEYS */;
+INSERT INTO `aliments` (`id`, `nom`, `poids_moyen`, `calories`, `vitamines_C`, `type_id`, `couleur_id`) VALUES
+	 (1, 'Bigaradier', 0.15, 40, 45, 1, 6),
+    (2, 'Banane', 0.12, 89, 8.7, 1, 6),
+    (3, 'Orange', 0.13, 47, 53.2, 1, 9),
+    (4, 'Fraise', 0.012, 32, 58.8, 1, 3),
+    (5, 'Abricot', 0.035, 48, 10, 1, 2),
+    (6, 'Ananas', 1.2, 50, 47.8, 1, 6),
+    (7, 'Avocat', 0.2, 160, 10, 1, 13),
+    (8, 'Cassis', 0.005, 63, 181, 1, 1),
+    (9, 'Cerise', 0.008, 50, 7, 1, 3),
+    (10, 'Citron', 0.1, 29, 53, 1, 6),
 	(11, 'Clémentine', 0.08, 47, 0, 1, 4),
 	(12, 'Coing', 0.3, 57, 0, 1, 6),
 	(13, 'Datte', 0.02, 282, 0, 1, 4),
@@ -76,11 +75,11 @@ INSERT IGNORE INTO `aliments` (`id`, `nom`, `poids_moyen`, `calories`, `vitamine
 	(36, 'Raisin', 0.02, 0, 0, 1, 14),
 	(64, 'Carotte', 0.1, 41, 0, 4, 5),
 	(65, 'Brocoli', 0.3, 34, 0, 4, 5),
-	(66, 'Pomme de terre', 0.2, 0, 0, 4, 11),
-	(67, 'Tomate', 0.15, 0, 0, 4, 8),
-	(68, 'Artichaut', 0.5, 47, 0, 4, 1),
-	(69, 'Asperge', 0.1, 20, 0, 4, 45),
-	(70, 'Aubergine', 0.2, 25, 0, 4, 6),
+	(66, 'Pomme de terre', 0.2, 77, 19.7, 4, 11),
+    (67, 'Tomate', 0.1, 18, 13.7, 4, 8),
+    (68, 'Artichaut', 0.4, 47, 11.7, 4, 1),
+    (69, 'Asperge', 0.05, 20, 5.6, 4, 45),
+    (70, 'Aubergine', 0.25, 25, 2.2, 4, 6),
 	(71, 'Betterave', 0.3, 43, 0, 4, 4),
 	(72, 'Blette', 0.3, 19, 0, 4, 6),
 	(73, 'Brocoli', 0.3, 34, 0, 4, 8),
@@ -109,176 +108,61 @@ INSERT IGNORE INTO `aliments` (`id`, `nom`, `poids_moyen`, `calories`, `vitamine
 	(96, 'Radis', 0.02, 0, 0, 4, 20),
 	(97, 'Tomate', 0.15, 0, 0, 4, 22),
 	(127, 'Riz', 0.001, 1, 0, 2, 2),
-	(129, 'Litchi Mur', 0.02, 66, 0, 1, 6),
-	(130, 'Litchi Mur', 0.02, 66, 0, 1, 6),
-	(131, 'Litchi Mur', 0.02, 66, 0, 1, 6),
-	(132, 'Litchi Mur', 0.02, 66, 0, 1, 6),
-	(133, 'Litchi Mur', 0.02, 66, 0, 1, 6),
-	(134, 'Litchi pas beau', 0.02, 66, 0, 1, 6),
-	(135, 'fgdsgdfgdg', 0.02, 5000, 50.5, 2, 2);
+	(133, 'Litchi Mur', 0.02, 66, 71.5, 1, 6),
+    (134, 'Litchi pas beau', 0.02, 66, 71.5, 1, 6);
+/*!40000 ALTER TABLE `aliments` ENABLE KEYS */;
 
--- Listage de la structure de table alimentations. couleur
+-- Listage de la structure de la table alimentations. couleur
 CREATE TABLE IF NOT EXISTS `couleur` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
-  `hexadecimal_rvb` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '#FFFFFF',
+  `hexadecimal_rvb` char(7) DEFAULT '#FFFFFF',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
--- Listage des données de la table alimentations.couleur : ~45 rows (environ)
-INSERT IGNORE INTO `couleur` (`id`, `nom`, `hexadecimal_rvb`) VALUES
-	(1, 'toto', '#FFFFFF'),
-	(2, 'blanc', '#FFFFFF'),
-	(3, 'Rouge', '#FF0000'),
-	(4, 'Citron vert', '#00FF00'),
-	(5, 'Bleu', '#0000FF'),
-	(6, 'Jaune', '#FFFF00'),
-	(7, 'Cyan / Aqua', '#00FFFF'),
-	(8, 'Magenta / Fuchsia', '#FF00FF'),
-	(9, 'argent', '#C0C0C0'),
-	(11, 'Bordeaux', '#800000'),
-	(12, 'olive', '#808000'),
-	(13, 'vert', '#008000'),
-	(14, 'Violet', '#800080'),
-	(15, 'Sarcelle', '#008080'),
-	(16, 'Marine', '#000080'),
-	(18, 'Red', '#FF0000'),
-	(20, 'Crème', '#FF5555'),
-	(21, 'Blanc', '#FFFFFF'),
-	(22, 'Noir', '#000000'),
-	(23, 'test', '#000000'),
-	(24, 'test2', '#000000'),
-	(25, 'test3', '#000000'),
-	(26, 'test4', '#000000'),
-	(27, 'test4', '#000000'),
-	(28, 'test4', '#000000'),
-	(29, 'test4', '#000000'),
-	(30, 'test4', '#000000'),
-	(31, 'test6', '#000000'),
-	(32, 'test6', '#000000'),
-	(33, 'test6', '#000000'),
-	(34, 'test6', '#000000'),
-	(35, 'test8', '#000000'),
-	(36, 'test9', '#000000'),
-	(37, 'test9', '#000000'),
-	(38, 'test9', '#000000'),
-	(39, 'test9', '#000000'),
-	(40, 'test10', '#000000'),
-	(41, 'test10', '#000000'),
-	(42, 'test10', '#000000'),
-	(43, 'test10', '#000000'),
-	(44, 'test10', '#000000'),
-	(45, 'test10', '#000000'),
-	(46, 'test11', '#000000'),
-	(47, 'test12', '#000000'),
-	(48, 'test13', '#000000'),
-	(49, 'titi', '#000000');
+-- Listage des données de la table alimentations.couleur : ~21 rows (environ)
+DELETE FROM `couleur`;
+/*!40000 ALTER TABLE `couleur` DISABLE KEYS */;
+INSERT INTO `couleur` (`id`, `nom`, `hexadecimal_rvb`) VALUES
+(1, 'Gris', '#808080'),
+(2, 'Blanc', '#FFFFFF'),
+(3, 'Rouge', '#FF0000'),
+(4, 'Citron', '#FFF700'),
+(5, 'Bleu RVB', '#0000FF'),
+(6, 'Jaune', '#FFFF00'),
+(7, 'Cyan / Aqua', '#00FFFF'),
+(8, 'Magenta / Fuchsia', '#FF00FF'),
+(9, 'Argent', '#C0C0C0'),
+(11, 'Bordeaux', '#800000'),
+(12, 'Olive', '#808000'),
+(13, 'Vert', '#008000'),
+(14, 'Violet', '#800080'),
+(15, 'Sarcelle', '#008080'),
+(16, 'Marine', '#000080'),
+(20, 'Crème', '#FFFDD0'),
+(22, 'Noir', '#000000'),
+(45, 'Vermillion', '#E34234');
 
--- Listage de la structure de table alimentations. fruits
-CREATE TABLE IF NOT EXISTS `fruits` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) DEFAULT NULL,
-  `couleur` varchar(255) DEFAULT NULL,
-  `poids_moyen` float DEFAULT NULL,
-  `calories` float DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table alimentations.fruits : ~36 rows (environ)
-INSERT IGNORE INTO `fruits` (`id`, `nom`, `couleur`, `poids_moyen`, `calories`) VALUES
-	(1, 'Pomme', 'Rouge', 0.1, 52),
-	(2, 'Banane', 'Jaune', 0.15, 89),
-	(3, 'Orange', 'Orange', 0.2, 47),
-	(4, 'Fraise', 'Rouge', 0.02, 33),
-	(5, 'Abricot', 'Orange', 0.05, 48),
-	(6, 'Ananas', 'Marron', 1, 50),
-	(7, 'Avocat', 'Vert', 0.2, 160),
-	(8, 'Cassis', 'Noir', 0.01, 63),
-	(9, 'Cerise', 'Rouge', 0.01, 50),
-	(10, 'Citron', 'Jaune', 0.15, 29),
-	(11, 'Clémentine', 'Orange', 0.08, 47),
-	(12, 'Coing', 'Jaune', 0.3, 57),
-	(13, 'Datte', 'Marron', 0.02, 282),
-	(14, 'Figue', 'Violet', 0.05, 74),
-	(15, 'Framboise', 'Rouge', 0.01, 53),
-	(16, 'Grenade', 'Rouge', 0.2, 83),
-	(17, 'Groseille', 'Rouge', 0.01, 56),
-	(18, 'Kiwi', 'Marron', 0.07, 61),
-	(19, 'Litchi', 'Rose', 0.02, 66),
-	(20, 'Mandarine', 'Orange', 0.08, 53),
-	(21, 'Mangue', 'Orange', 0.3, 60),
-	(22, 'Melon', 'Vert', 1, 34),
-	(23, 'Mirabelle', 'Jaune', 0.02, 67),
-	(24, 'Mûre', 'Noir', 0.01, 43),
-	(25, 'Myrtille', 'Bleu', 0.01, 57),
-	(26, 'Nectarine', 'Orange', 0.1, 44),
-	(27, 'Noix de coco', 'Marron', 1, 354),
-	(28, 'Olive', 'Vert', 0.02, 115),
-	(29, 'Pamplemousse', 'Jaune', 0.3, 42),
-	(30, 'Papaye', 'Orange', 1, 43),
-	(31, 'Pastèque', 'Vert', 2, 30),
-	(32, 'Pêche', 'Orange', 0.15, 39),
-	(33, 'Poire', 'Vert', 0.2, 57),
-	(34, 'Pomelo', 'Jaune', 0.25, 38),
-	(35, 'Prune', 'Violet', 0.04, 46),
-	(36, 'Raisin', 'Violet', 0.02, NULL);
+/*!40000 ALTER TABLE `couleur` ENABLE KEYS */;
 
--- Listage de la structure de table alimentations. legumes
-CREATE TABLE IF NOT EXISTS `legumes` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) DEFAULT NULL,
-  `couleur` varchar(255) DEFAULT NULL,
-  `poids_moyen` float DEFAULT NULL,
-  `calories` float DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table alimentations.legumes : ~27 rows (environ)
-INSERT IGNORE INTO `legumes` (`id`, `nom`, `couleur`, `poids_moyen`, `calories`) VALUES
-	(1, 'Carotte', 'Orange', 0.1, 41),
-	(2, 'Brocoli', 'Vert', 0.3, 34),
-	(3, 'Pomme de terre', 'Marron', 0.2, NULL),
-	(4, 'Tomate', 'Rouge', 0.15, NULL),
-	(5, 'Artichaut', 'Vert', 0.5, 47),
-	(6, 'Asperge', 'Vert', 0.1, 20),
-	(7, 'Aubergine', 'Violet', 0.2, 25),
-	(8, 'Betterave', 'Rouge', 0.3, 43),
-	(9, 'Blette', 'Vert', 0.3, 19),
-	(10, 'Brocoli', 'Vert', 0.3, 34),
-	(11, 'Carotte', 'Orange', 0.1, 41),
-	(12, 'Céleri', 'Vert', 0.4, 16),
-	(13, 'Champignon', 'Marron', 0.05, 22),
-	(21, 'Fenouil', 'Vert', 0.4, 31),
-	(22, 'Haricot vert', 'Vert', 0.05, 31),
-	(23, 'Laitue', 'Vert', 0.3, 15),
-	(24, 'Maïs', 'Jaune', 1, 86),
-	(25, 'Navet', 'Blanc', 0.2, 28),
-	(26, 'Oignon', 'Marron', 0.1, 40),
-	(27, 'Panais', 'Blanc', 0.3, 75),
-	(28, 'Petit pois', 'Vert', 0.01, 81),
-	(29, 'Poireau', 'Vert', 0.3, NULL),
-	(30, 'Poivron', 'Rouge', 0.2, NULL),
-	(31, 'Pomme de terre', 'Marron', 0.2, NULL),
-	(32, 'Potiron', 'Orange', 2, NULL),
-	(33, 'Radis', 'Rouge', 0.02, NULL),
-	(34, 'Tomate', 'Rouge', 0.15, NULL);
-
--- Listage de la structure de table alimentations. type_aliment
+-- Listage de la structure de la table alimentations. type_aliment
 CREATE TABLE IF NOT EXISTS `type_aliment` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table alimentations.type_aliment : ~4 rows (environ)
-INSERT IGNORE INTO `type_aliment` (`id`, `nom`) VALUES
+DELETE FROM `type_aliment`;
+/*!40000 ALTER TABLE `type_aliment` DISABLE KEYS */;
+INSERT INTO `type_aliment` (`id`, `nom`) VALUES
 	(1, 'fruit'),
 	(2, 'céréale'),
 	(3, 'condiment'),
 	(4, 'légume');
+/*!40000 ALTER TABLE `type_aliment` ENABLE KEYS */;
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
