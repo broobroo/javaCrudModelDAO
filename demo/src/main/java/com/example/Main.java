@@ -21,7 +21,7 @@ public class Main {
         // Initialisation de la connexion à la base de données
         String jdbcURL = "jdbc:mysql://localhost:3306/alimentations";
         String jdbcUsername = "root";
-        String jdbcPassword = "";
+        String jdbcPassword = "root";
         DatabaseConnection dbConnection = new DatabaseConnection(jdbcURL, jdbcUsername, jdbcPassword);
 
 

@@ -4,6 +4,7 @@
     <title>Liste des Couleurs</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!-- Inclure les fichiers CSS/JS si nécessaire -->
+    <!-- http://localhost:8080/demo/webapps/jsp/CouleurListForm.jsp -->
 </head>
 <body>
     <!-- Inclure le menu -->

@@ -4,6 +4,7 @@
     <title>Update Aliment</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!-- Inclure les fichiers CSS/JS si nécessaire -->
+      <!-- http://localhost:8080/demo/webapps/jsp/AlimentUpdateForm.jsp -->
 </head>
 <body>
     <!-- Inclure le menu -->
