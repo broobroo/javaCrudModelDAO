@@ -30,7 +30,11 @@ Ce projet est une application web Java basée sur Servlets et JDBC pour gérer l
 
 ### Démarrage de l'Application
 - Démarrez le serveur Tomcat.
-- Accédez à `http://localhost:8080/` pour interagir avec l'application via les interfaces JSP.
+- Accédez à `http://localhost:8080/demo/webapps/jsp/CouleurListForm.jsp` pour interagir avec l'application via les interfaces JSP.
+
+ATTENTION
+Vous devez mettre à jour la base de données alimentations.sql
+Afin qu'il n'y ait pas de valeur null dans les champs couleur_id et type_id.
 
 ### API Endpoints
 
