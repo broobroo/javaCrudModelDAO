@@ -1,0 +1,60 @@
+# Fichiers de compilation
+target/
+build/
+out/
+bin/
+
+# Fichiers de package
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Fichiers de logs et de données
+*.log
+*.sql
+*.sqlite
+
+# Dossiers et fichiers IDE
+.idea/
+*.iml
+*.class
+*.classpath
+*.project
+*.settings/
+*.vscode/
+
+# Système de build
+.gradle/
+build/
+
+# Autres fichiers et dossiers
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+tmp/
+
+# Fichiers de configuration spécifiques à l'environnement
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Fichiers de sauvegarde
+*~
+*.bak
+*.swp
+*.orig
+
+# Tomcat
+**/apache-tomcat-*/
+**/apache-tomcat-*/logs/
+**/apache-tomcat-*/temp/
+**/apache-tomcat-*/work/
+**/apache-tomcat-*/webapps/
+
