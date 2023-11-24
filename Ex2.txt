@@ -1,0 +1,7 @@
+exercice 2 consiste a passer des classes dans les méthodes
+
+Dans Couleur DAO :
+	dans handlePost : Couleur varCouleur = new Couleur(nom, hexadecimal_rvb);
+			  ResultSet resultSet = insertCouleurAndGet(varCouleur);
+	dans insertCouleurAndGet :public ResultSet insertCouleurAndGet(Couleur couleur ) throws SQLException {
+                                  
